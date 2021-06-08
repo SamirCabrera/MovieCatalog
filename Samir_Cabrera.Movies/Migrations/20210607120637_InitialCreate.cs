@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Samir_Cabrera.Movies.Migrations
 {
@@ -10,8 +11,7 @@ namespace Samir_Cabrera.Movies.Migrations
                 name: "Movies",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    Id = table.Column<Guid>(nullable: false),
                     Title = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Like = table.Column<bool>(nullable: false),
@@ -27,9 +27,8 @@ namespace Samir_Cabrera.Movies.Migrations
                 name: "Image",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    MovieId = table.Column<int>(nullable: false),
+                    Id = table.Column<Guid>(nullable: false),
+                    MovieId = table.Column<Guid>(nullable: false),
                     Url = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -46,27 +45,27 @@ namespace Samir_Cabrera.Movies.Migrations
             migrationBuilder.InsertData(
                 table: "Movies",
                 columns: new[] { "Id", "Description", "Like", "Title", "ToViewLater", "View" },
-                values: new object[] { 1, "http://sample.com", true, "s", false, false });
+                values: new object[] { new Guid("aa3f8665-a004-4e5d-9296-5633579c9648"), "http://sample.com", true, "s", false, false });
 
             migrationBuilder.InsertData(
                 table: "Movies",
                 columns: new[] { "Id", "Description", "Like", "Title", "ToViewLater", "View" },
-                values: new object[] { 2, "http://sample.com", true, "s", false, false });
+                values: new object[] { new Guid("2b983e46-e960-40af-9b03-3c62d9e140ab"), "http://sample.com", true, "s", false, false });
 
             migrationBuilder.InsertData(
                 table: "Image",
                 columns: new[] { "Id", "MovieId", "Url" },
-                values: new object[] { 1, 1, "s" });
+                values: new object[] { new Guid("7790df72-27a3-4a08-91ff-f428a1d6e919"), new Guid("aa3f8665-a004-4e5d-9296-5633579c9648"), "s" });
 
             migrationBuilder.InsertData(
                 table: "Image",
                 columns: new[] { "Id", "MovieId", "Url" },
-                values: new object[] { 2, 2, "s" });
+                values: new object[] { new Guid("d7ac925f-999b-49f8-b201-7405957685f7"), new Guid("2b983e46-e960-40af-9b03-3c62d9e140ab"), "s" });
 
             migrationBuilder.InsertData(
                 table: "Image",
                 columns: new[] { "Id", "MovieId", "Url" },
-                values: new object[] { 3, 2, "s" });
+                values: new object[] { new Guid("6bfae1bc-18ff-434b-b10c-0a2defb867bd"), new Guid("2b983e46-e960-40af-9b03-3c62d9e140ab"), "s" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Image_MovieId",

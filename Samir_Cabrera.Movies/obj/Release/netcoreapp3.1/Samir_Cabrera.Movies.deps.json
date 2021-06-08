@@ -29,7 +29,7 @@
   },
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "Samir_Cabrera.Movie/1.0.0": {
+      "Samir_Cabrera.Movies/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.13",
           "Microsoft.EntityFrameworkCore.Sqlite": "3.1.13",
@@ -306,10 +306,10 @@
           "WindowsBase": "4.0.0.0"
         },
         "runtime": {
-          "Samir_Cabrera.Movie.dll": {}
+          "Samir_Cabrera.Movies.dll": {}
         },
         "compile": {
-          "Samir_Cabrera.Movie.dll": {}
+          "Samir_Cabrera.Movies.dll": {}
         }
       },
       "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
@@ -4056,7 +4056,7 @@
     }
   },
   "libraries": {
-    "Samir_Cabrera.Movie/1.0.0": {
+    "Samir_Cabrera.Movies/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

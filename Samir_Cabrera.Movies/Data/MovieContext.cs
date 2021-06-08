@@ -19,13 +19,17 @@ namespace Samir_Cabrera.Movies.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            Guid id1 = Guid.NewGuid();
+            Guid id2 = Guid.NewGuid();
+
             modelBuilder.Entity<Movie>().HasData(
-                new Movie { Id = 1, Description = "http://sample.com", Like = true, Title = "s" },
-                new Movie { Id = 2, Description = "http://sample.com", Like = true, Title = "s" });
+                new Movie { Id = id1, Description = "http://sample.com", Like = true, Title = "s" },
+                new Movie { Id = id2, Description = "http://sample.com", Like = true, Title = "s" });
+
             modelBuilder.Entity<Image>().HasData(
-                     new Image { Id = 2, MovieId = 2, Url = "s" },
-                     new Image { Id = 3, MovieId = 2, Url = "s" },
-                     new Image { Id = 1, MovieId = 1, Url = "s" }
+                     new Image { Id = Guid.NewGuid(), MovieId = id2, Url = "s" },
+                     new Image { Id = Guid.NewGuid(), MovieId = id2, Url = "s" },
+                     new Image { Id = Guid.NewGuid(), MovieId = id1, Url = "s" }
                 );
         }
     }

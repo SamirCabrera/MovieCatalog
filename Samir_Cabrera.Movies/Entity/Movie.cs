@@ -7,7 +7,7 @@ namespace Samir_Cabrera.Movies.Entity
 {
     public class Movie
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public String Title { get; set; }
         public String Description { get; set; }
         public Boolean Like { get; set; }

@@ -37,9 +37,9 @@ namespace Samir_Cabrera.Movies.Controllers
 
         // GET: api/Movies/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Movie>> GetMovie(int id)
+        public async Task<ActionResult<Movie>> GetMovie(Guid id)
         {
-            var movie = await _context.Movies.FindAsync(id);
+            var movie = await _context.Movies.Include(x => x.Images).FirstOrDefaultAsync(x => x.Id == id);
 
             if (movie == null)
             {
@@ -50,7 +50,7 @@ namespace Samir_Cabrera.Movies.Controllers
         }
 
         [HttpPut("changeLike/{id}")]
-        public async Task<IActionResult> ChangeLike([FromRoute] int id)
+        public async Task<IActionResult> ChangeLike([FromRoute] Guid id)
         {
             if (!ModelState.IsValid)
             {
@@ -73,7 +73,7 @@ namespace Samir_Cabrera.Movies.Controllers
         }
 
         [HttpPut("changeView/{id}")]
-        public async Task<IActionResult> ChangeView([FromRoute] int id)
+        public async Task<IActionResult> ChangeView([FromRoute] Guid id)
         {
             if (!ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace Samir_Cabrera.Movies.Controllers
         }
 
         [HttpPut("changeToLater/{id}")]
-        public async Task<IActionResult> ChangeToLater([FromRoute] int id)
+        public async Task<IActionResult> ChangeToLater([FromRoute] Guid id)
         {
             if (!ModelState.IsValid)
             {
@@ -118,11 +118,8 @@ namespace Samir_Cabrera.Movies.Controllers
 
         }
 
-        // PUT: api/Movies/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutMovie(int id, Entity.Movie movie)
+        public async Task<IActionResult> PutMovie(Guid id, Movie movie)
         {
             if (id != movie.Id)
             {
@@ -178,7 +175,7 @@ namespace Samir_Cabrera.Movies.Controllers
             return movie;
         }
 
-        private bool MovieExists(int id)
+        private bool MovieExists(Guid id)
         {
             return _context.Movies.Any(e => e.Id == id);
         }

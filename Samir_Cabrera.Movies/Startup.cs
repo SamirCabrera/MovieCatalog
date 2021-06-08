@@ -34,6 +34,17 @@ namespace Samir_Cabrera.Movies
             services.AddDbContext<MovieContext>(options => options.UseSqlite("Data Source=moviecatalog_api.db"));
 
             services.AddSwaggerInApi(Configuration, _apiVersion);
+
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                builder =>
+                {
+                    builder.AllowAnyOrigin();
+                    builder.AllowAnyMethod();
+                    builder.AllowAnyHeader();
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +60,8 @@ namespace Samir_Cabrera.Movies
             app.UseSwaggerInApi(Configuration, _apiVersion);
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 

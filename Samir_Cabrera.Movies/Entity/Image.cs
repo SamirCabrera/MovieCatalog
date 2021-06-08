@@ -7,8 +7,8 @@ namespace Samir_Cabrera.Movies.Entity
 {
     public class Image
     {
-        public int Id { get; set; }
-        public int MovieId { get; set; }
+        public Guid Id { get; set; }
+        public Guid MovieId { get; set; }
         public string Url { get; set; }
     }
 }
