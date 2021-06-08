@@ -151,7 +151,7 @@ namespace Samir_Cabrera.Movies.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
          [HttpPost]
-        public async Task<ActionResult<Entity.Movie>> PostMovie(Entity.Movie movie)
+        public async Task<ActionResult<Movie>> PostMovie(Movie movie)
         {
             _context.Movies.Add(movie);
             await _context.SaveChangesAsync();
@@ -161,7 +161,7 @@ namespace Samir_Cabrera.Movies.Controllers
 
         // DELETE: api/Movies/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Entity.Movie>> DeleteMovie(int id)
+        public async Task<ActionResult<Movie>> DeleteMovie(Guid id)
         {
             var movie = await _context.Movies.FindAsync(id);
             if (movie == null)
